@@ -1,0 +1,14 @@
+@import "base";
+
+body {
+    background: red;
+
+    header {
+        background: blue;
+        color: $text_base_offwhite_ultra;
+    }
+    footer {
+        background: green;
+        color: $text_base_offwhite_ultra;
+    }
+}

@@ -1,0 +1,45 @@
+<section class="slider-container js-slider-container">
+    <div class="slider js-slider {{#mobile}}isMobile{{/mobile}}" data-is-mobile="{{mobile}}">
+        {{#unless mobile}}
+            <a href="#!" class="hidden slide-nav slide-right js-slide-right"><i class="fa fa-chevron-right"></i></a>
+            <a href="#!" class="hidden slide-nav slide-left js-slide-left"><i class="fa fa-chevron-left"></i></a>
+        {{/unless}}
+
+        {{#slides}}
+            <div class="slide js-slide {{type}}-slide" {{#itemScopeType}}itemscope itemtype="http://schema.org/{{.}}"{{/itemScopeType}}>
+                <div class="thumbnail">
+                    {{#if thumbnail}}
+                        <img src="{{thumbnail}}" alt="{{name}}" />
+                    {{else}}
+                        <div class="{{type}}-thumb"></div>
+                    {{/if}}
+                </div>
+
+                {{#review}}
+                    <footer class="work-review">
+                        <blockquote>{{text}}</blockquote>
+                        <small>{{reviewer}}</small>
+                    </footer>
+                {{/review}}
+            </div>
+        {{/slides}}
+    </div>
+
+    {{#unless mobile}}
+        <div class="thumbs-container">
+            <a href="#!" class="hidden thumbs-nav slide-thumbs-right js-slide-thumbs-right"><i class="fa fa-chevron-right"></i></a>
+            <a href="#!" class="hidden thumbs-nav slide-thumbs-left js-slide-thumbs-left"><i class="fa fa-chevron-left"></i></a>
+            <div class="thumbs js-thumbs">
+                {{#slides}}
+                    <div class="thumb js-thumb">
+                        {{#if thumbnail}}
+                            <img src="{{thumbnail}}" alt="{{name}}" />
+                        {{else}}
+                            <div class="thumb-placeholder {{type}}-thumb"></div>
+                        {{/if}}
+                    </div>
+                {{/slides}}
+            </div>
+        </div>
+    {{/unless}}
+</section>

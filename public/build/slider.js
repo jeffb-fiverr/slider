@@ -9920,7 +9920,7 @@
 	        s = {};
 
 	  function init() {
-	    const model = $container.data();
+	    const model = $container.find('.js-slider').data();
 
 	    m.firstSlidePosition = m.slidePosition = 0;
 	    m.slideIterator = 1;
@@ -9942,10 +9942,9 @@
 	  };
 
 	  function transitionSlides(activeSlideIndex = m.firstSlidePosition) {
-	    const activeClass = 'active',
-	          $slides = s.$slides;
+	    const activeClass = 'active';
 
-	    $slides
+	    s.$slides
 	      .hide()
 	      .removeClass(activeClass)
 	      .eq(activeSlideIndex)
@@ -10060,6 +10059,7 @@
 	    }
 
 	    activateThumbnail();
+	    moveThumbnailIntoView();
 	  };
 
 	  function slideThumbCarouselLeft(e) {
@@ -10082,6 +10082,44 @@
 	      .removeClass('active')
 	      .eq(m.slidePosition)
 	      .addClass('active');
+	  };
+
+	  function moveThumbnailIntoView() {
+	    const thumbWidth = parseInt(s.$thumbs.eq(0).outerWidth(true)),
+	          viewableWidth = parseInt($container.find('.thumbs-container').width()),
+	          containerWidth = parseInt(s.$thumbContainer.width()),
+	          currentViewMin = Math.abs(parseInt(s.$thumbContainer.css('left'))),
+	          currentViewMax = currentViewMin + viewableWidth,
+	          currentThumbLeftPos = (thumbWidth * m.slidePosition),
+	          currentThumbRightPos = currentThumbLeftPos + thumbWidth,
+	          isInLeftBounds = (currentViewMin <= currentThumbLeftPos),
+	          isInRightBounds = (currentViewMax >= currentThumbRightPos);
+
+	    let newLeftPosDistance,
+	        newLeftPosNegated,
+	        newLeftPos;
+
+	    s.$slideThumbLeft.removeClass('hidden');
+	    s.$slideThumbRight.removeClass('hidden');
+
+	    // is all of thumb in view?
+	    if (isInLeftBounds && isInRightBounds) {
+	      return;
+	    }
+
+	    newLeftPosDistance = (currentThumbLeftPos - (viewableWidth/2));
+	    newLeftPosNegated = (newLeftPosDistance * -1);
+	    newLeftPos = newLeftPosNegated + "px";
+
+	    if (newLeftPosDistance > (containerWidth - viewableWidth)) {
+	      newLeftPos = `-${containerWidth - viewableWidth}px`;
+	      s.$slideThumbRight.addClass('hidden');
+	    } else if (newLeftPosDistance < 0) {
+	      newLeftPos = 0;
+	      s.$slideThumbLeft.addClass('hidden');
+	    }
+
+	    s.$thumbContainer.css('left', newLeftPos);
 	  };
 
 	  init();

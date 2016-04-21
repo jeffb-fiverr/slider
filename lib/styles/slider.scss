@@ -1,14 +1,198 @@
 @import "base";
 
-body {
-    background: red;
+.slider-container {
+    width: 608px;
 
-    header {
-        background: blue;
-        color: $text_base_offwhite_ultra;
+    .slider {
+        height: 410px;
+        overflow: hidden;
+        position: relative;
+
+        .slide-nav {
+            background: rgba(0,0,0,0.1);
+            position: absolute;
+            z-index: 2;
+            display: block;
+            width: 33px;
+            height: 140px;
+            top: 50%;
+            margin-top: -70px;
+            cursor: pointer;
+
+            i {
+                font-size: 20px;
+                height: 20px;
+                color: $text_base_dark;
+                position: absolute;
+                top: 50%;
+                margin-top: -10px;
+            }
+
+            &.slide-left {
+                left: 0;
+                border-radius: 0 15px 15px 0;
+
+                i {
+                    left: 7px;
+                }
+            }
+
+            &.slide-right {
+                right: 0;
+                border-radius: 15px 0 0 15px;
+
+                i {
+                    right: 7px;
+                }
+            }
+        }
+
+        .slide {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+
+            @include opacity(0);
+            @include transition(opacity .3s ease);
+
+            .thumbnail {
+                position: absolute;
+                z-index: 1;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .work-review {
+                background: rgba(0,0,0,0.75);
+                position: absolute;
+                z-index: 2;
+                width: 100%;
+                padding: 15px;
+                box-sizing: border-box;
+                color: #fff;
+                bottom: -80px;
+
+                blockquote {
+                    position: relative;
+                    margin: 0;
+                    padding-left: 9px;
+                    font-size: 16px;
+                    line-height: 20px;
+                    height: 20px;
+                    font-weight: 700;
+                    color: #fff;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+
+                    &:before {
+                        content: "\201C";
+                        top: 0;
+                        left: 0;
+                        position: absolute;
+                    }
+
+                    &:after { content: "\201D"; }
+                }
+
+                small {
+                    display: block;
+                    font-size: 12px;
+                    padding-top: 3px;
+                    color: #fff;
+                }
+
+                @include transition(bottom .3s ease .35s);
+            }
+
+            &.active {
+
+                .work-review { bottom: 0; }
+
+                @include opacity(1);
+            }
+        }
     }
-    footer {
-        background: green;
-        color: $text_base_offwhite_ultra;
+
+    .thumbs-container {
+        overflow: hidden;
+        position: relative;
+
+        .thumbs-nav {
+            background: #fff;
+
+            position: absolute;
+            z-index: 2;
+            width: 20px;
+            height: 100%;
+
+            @include opacity(.7);
+            @include transition(opacity .2s ease);
+
+            &.slide-thumbs-right {
+                right: 0;
+
+                i {
+                    margin-left: 7px;
+                }
+            }
+
+            &.slide-thumbs-left {
+                left: 0;
+
+                i {
+                    margin-left: 5px;
+                }
+            }
+
+            &:hover {
+                @include opacity(1);
+            }
+
+            i {
+                height: 20px;
+                color: $text_base_dark;
+                position: absolute;
+                top: 50%;
+                margin-top: -5px;
+            }
+        }
+
+        .thumbs {
+            height: 80px;
+            padding: 5px 0 5px 5px;
+            overflow: hidden;
+            box-sizing: border-box;
+            position: relative;
+            left: 0;
+
+            @include transition(left .3s ease);
+
+            .thumb {
+                float: left;
+                margin-right: 5px;
+                overflow: hidden;
+                cursor: pointer;
+
+                @include opacity(0.3);
+
+                img,
+                .thumb-placeholder {
+                    width: 92px;
+                    height: 70px;
+                }
+
+                &.active {
+                    @include opacity(1);
+                }
+            }
+        }
     }
 }

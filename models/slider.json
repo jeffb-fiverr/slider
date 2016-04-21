@@ -1,4 +1,133 @@
 {
-	"headerMessage" : "This is a header.",
-	"footerMessage" : "This is a footer."
+    "mobile" : false,
+	"slides" : [
+        {
+            "type" : "image",
+            "name" : "funny cat wink face",
+            "src" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg",
+            "thumbnail" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg"
+        },
+        {
+            "type" : "video",
+            "itemScopeType" : "VideoObject",
+            "name" : "slapchop commercial",
+            "src" : "http://view.vzaar.com/6268382/player?autoplay=true",
+            "thumbnail" : "https://cldn0.fiverrcdn.com/fiverr/t_main2_video/v1461007208/vzrthumb/6268382/image"
+        },
+        {
+            "type" : "audio",
+            "name" : "blue doing some audio voiceover",
+            "src" : "http://view.vzaar.com/6846468/player?autoplay=true&apiOn=true",
+            "review" : {
+                "text" : "EXCELLENT! Thank you so much. I'll be back for sure!",
+                "reviewer" : "Reviewed by paulkellisjr 1 day ago"
+            }
+        },
+        {
+            "type" : "pdf",
+            "name" : "the ultimate paleo guide",
+            "src" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf",
+            "thumbnail" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf",
+            "review" : {
+                "text" : "Great as usual!",
+                "reviewer" : "Reviewed by walesbj about 10 hours ago"
+            }
+        },
+        {
+            "type" : "image",
+            "name" : "funny cat wink face",
+            "src" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg",
+            "thumbnail" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg",
+            "review" : {
+                "text" : "EXCELLENT! Thank you so much. I'll be back for sure!",
+                "reviewer" : "Reviewed by paulkellisjr 1 day ago"
+            }
+        },
+        {
+            "type" : "video",
+            "itemScopeType" : "VideoObject",
+            "name" : "slapchop commercial",
+            "src" : "http://view.vzaar.com/6268382/player?autoplay=true",
+            "thumbnail" : "https://cldn0.fiverrcdn.com/fiverr/t_main2_video/v1461007208/vzrthumb/6268382/image",
+            "review" : {
+                "text" : "Great as usual!",
+                "reviewer" : "Reviewed by walesbj about 10 hours ago"
+            }
+        },
+        {
+            "type" : "audio",
+            "name" : "blue doing some audio voiceover",
+            "src" : "http://view.vzaar.com/6846468/player?autoplay=true&apiOn=true"
+        },
+        {
+            "type" : "pdf",
+            "name" : "the ultimate paleo guide",
+            "src" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf",
+            "thumbnail" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf"
+        },
+        {
+            "type" : "image",
+            "name" : "funny cat wink face",
+            "src" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg",
+            "thumbnail" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg",
+            "review" : {
+                "text" : "EXCELLENT! Thank you so much. I'll be back for sure!",
+                "reviewer" : "Reviewed by paulkellisjr 1 day ago"
+            }
+        },
+        {
+            "type" : "video",
+            "itemScopeType" : "VideoObject",
+            "name" : "slapchop commercial",
+            "src" : "http://view.vzaar.com/6268382/player?autoplay=true",
+            "thumbnail" : "https://cldn0.fiverrcdn.com/fiverr/t_main2_video/v1461007208/vzrthumb/6268382/image",
+            "review" : {
+                "text" : "Great as usual!",
+                "reviewer" : "Reviewed by walesbj about 10 hours ago"
+            }
+        },
+        {
+            "type" : "audio",
+            "name" : "blue doing some audio voiceover",
+            "src" : "http://view.vzaar.com/6846468/player?autoplay=true&apiOn=true"
+        },
+        {
+            "type" : "pdf",
+            "name" : "the ultimate paleo guide",
+            "src" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf",
+            "thumbnail" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf"
+        },
+        {
+            "type" : "image",
+            "name" : "funny cat wink face",
+            "src" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg",
+            "thumbnail" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg",
+            "review" : {
+                "text" : "EXCELLENT! Thank you so much. I'll be back for sure!",
+                "reviewer" : "Reviewed by paulkellisjr 1 day ago"
+            }
+        },
+        {
+            "type" : "video",
+            "itemScopeType" : "VideoObject",
+            "name" : "slapchop commercial",
+            "src" : "http://view.vzaar.com/6268382/player?autoplay=true",
+            "thumbnail" : "https://cldn0.fiverrcdn.com/fiverr/t_main2_video/v1461007208/vzrthumb/6268382/image",
+            "review" : {
+                "text" : "Great as usual!",
+                "reviewer" : "Reviewed by walesbj about 10 hours ago"
+            }
+        },
+        {
+            "type" : "audio",
+            "name" : "blue doing some audio voiceover",
+            "src" : "http://view.vzaar.com/6846468/player?autoplay=true&apiOn=true"
+        },
+        {
+            "type" : "pdf",
+            "name" : "the ultimate paleo guide",
+            "src" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf",
+            "thumbnail" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf"
+        }
+    ]
 }

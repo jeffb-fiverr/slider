@@ -1,9 +1,11 @@
 'use strict'
 
 import $ from 'jquery';
-const HomePage = require('../../lib/js/slider');
+const Slider = require('../../lib/js/slider');
 
 $(function() {
-    const homepage = new HomePage();
-    homepage.init();
+  const $sliderContainer = $('.js-slider-container');
+
+  new Slider($sliderContainer);
+
 });

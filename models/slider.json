@@ -2,20 +2,20 @@
     "mobile" : false,
 	"slides" : [
         {
-            "type" : "image",
+            "typeImage" : true,
             "name" : "funny cat wink face",
             "src" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg",
             "thumbnail" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg"
         },
         {
-            "type" : "video",
+            "typeVideo" : true,
             "itemScopeType" : "VideoObject",
             "name" : "slapchop commercial",
             "src" : "http://view.vzaar.com/6268382/player?autoplay=true",
             "thumbnail" : "https://cldn0.fiverrcdn.com/fiverr/t_main2_video/v1461007208/vzrthumb/6268382/image"
         },
         {
-            "type" : "audio",
+            "typeAudio" : true,
             "name" : "blue doing some audio voiceover",
             "src" : "http://view.vzaar.com/6846468/player?autoplay=true&apiOn=true",
             "review" : {
@@ -24,7 +24,7 @@
             }
         },
         {
-            "type" : "pdf",
+            "typePdf" : true,
             "name" : "the ultimate paleo guide",
             "src" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf",
             "thumbnail" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf",
@@ -34,7 +34,7 @@
             }
         },
         {
-            "type" : "image",
+            "typeImage" : true,
             "name" : "funny cat wink face",
             "src" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg",
             "thumbnail" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg",
@@ -44,7 +44,7 @@
             }
         },
         {
-            "type" : "video",
+            "typeVideo" : true,
             "itemScopeType" : "VideoObject",
             "name" : "slapchop commercial",
             "src" : "http://view.vzaar.com/6268382/player?autoplay=true",
@@ -55,18 +55,18 @@
             }
         },
         {
-            "type" : "audio",
+            "typeAudio" : true,
             "name" : "blue doing some audio voiceover",
             "src" : "http://view.vzaar.com/6846468/player?autoplay=true&apiOn=true"
         },
         {
-            "type" : "pdf",
+            "typePdf" : true,
             "name" : "the ultimate paleo guide",
             "src" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf",
             "thumbnail" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf"
         },
         {
-            "type" : "image",
+            "typeImage" : true,
             "name" : "funny cat wink face",
             "src" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg",
             "thumbnail" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg",
@@ -76,7 +76,7 @@
             }
         },
         {
-            "type" : "video",
+            "typeVideo" : true,
             "itemScopeType" : "VideoObject",
             "name" : "slapchop commercial",
             "src" : "http://view.vzaar.com/6268382/player?autoplay=true",
@@ -87,18 +87,18 @@
             }
         },
         {
-            "type" : "audio",
+            "typeAudio" : true,
             "name" : "blue doing some audio voiceover",
             "src" : "http://view.vzaar.com/6846468/player?autoplay=true&apiOn=true"
         },
         {
-            "type" : "pdf",
+            "typePdf" : true,
             "name" : "the ultimate paleo guide",
             "src" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf",
             "thumbnail" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf"
         },
         {
-            "type" : "image",
+            "typeImage" : true,
             "name" : "funny cat wink face",
             "src" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg",
             "thumbnail" : "http://topimages.org/wp-content/uploads/2015/06/funny-cat-pictures-2.jpg",
@@ -108,7 +108,7 @@
             }
         },
         {
-            "type" : "video",
+            "typeVideo" : true,
             "itemScopeType" : "VideoObject",
             "name" : "slapchop commercial",
             "src" : "http://view.vzaar.com/6268382/player?autoplay=true",
@@ -119,12 +119,12 @@
             }
         },
         {
-            "type" : "audio",
+            "typeAudio" : true,
             "name" : "blue doing some audio voiceover",
             "src" : "http://view.vzaar.com/6846468/player?autoplay=true&apiOn=true"
         },
         {
-            "type" : "pdf",
+            "typePdf" : true,
             "name" : "the ultimate paleo guide",
             "src" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf",
             "thumbnail" : "https://cldn0.fiverrcdn.com/fiverr/t_gig_pdf_gallery_view_ver4,f_jpg/deliveries/36477614/original/proofreading-editing_ws_1460963476.pdf"

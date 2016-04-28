@@ -136,8 +136,10 @@ function Slider($container) {
     if (activeSlideIndex === 0) {
       // first slide
       s.$slideLeft.addClass('hidden');
+      s.$slideRight.removeClass('hidden');
     } else if (activeSlideIndex === getSlideCount() - 1) {
       // last slide
+      s.$slideLeft.removeClass('hidden');
       s.$slideRight.addClass('hidden');
     } else {
       s.$slideLeft.removeClass('hidden');
@@ -181,9 +183,6 @@ function Slider($container) {
         newLeftPosNegated = void 0,
         newLeftPos = void 0;
 
-    s.$slideThumbLeft.removeClass('hidden');
-    s.$slideThumbRight.removeClass('hidden');
-
     // is all of thumb in view?
     if (isInLeftBounds && isInRightBounds) {
       return;
@@ -195,13 +194,37 @@ function Slider($container) {
 
     if (newLeftPosDistance > containerWidth - viewableWidth) {
       newLeftPos = '-' + (containerWidth - viewableWidth) + 'px';
-      s.$slideThumbRight.addClass('hidden');
     } else if (newLeftPosDistance < 0) {
       newLeftPos = 0;
-      s.$slideThumbLeft.addClass('hidden');
     }
 
     s.$thumbContainer.css('left', newLeftPos);
+
+    handleThumbnailSliderArrows(containerWidth, viewableWidth, newLeftPos);
+  };
+
+  function handleThumbnailSliderArrows(containerWidth, viewableWidth, leftPos) {
+    console.info('handleThumbnailSliderArrows', {
+      containerWidth: containerWidth,
+      viewableWidth: viewableWidth,
+      leftPos: leftPos
+    });
+
+    var leftMargin = Math.abs(parseInt(leftPos));
+
+    if (containerWidth === viewableWidth) {
+      s.$slideThumbLeft.addClass('hidden');
+      s.$slideThumbRight.addClass('hidden');
+    } else if (leftPos === 0) {
+      s.$slideThumbLeft.addClass('hidden');
+      s.$slideThumbRight.removeClass('hidden');
+    } else if (leftMargin + viewableWidth === containerWidth) {
+      s.$slideThumbLeft.removeClass('hidden');
+      s.$slideThumbRight.addClass('hidden');
+    } else {
+      s.$slideThumbLeft.removeClass('hidden');
+      s.$slideThumbRight.removeClass('hidden');
+    }
   };
 
   init();

@@ -54,7 +54,7 @@ this["slider"] = {"1":function(depth0,helpers,partials,data) {
 },"18":function(depth0,helpers,partials,data) {
     var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
-  return "                    <footer class=\"work-review\">\n                        <blockquote>"
+  return "                    <footer class=\"work-review js-work-review\">\n                        <blockquote>"
     + alias3(((helper = (helper = helpers.text || (depth0 != null ? depth0.text : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"text","hash":{},"data":data}) : helper)))
     + "</blockquote>\n                        <small>"
     + alias3(((helper = (helper = helpers.reviewer || (depth0 != null ? depth0.reviewer : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"reviewer","hash":{},"data":data}) : helper)))

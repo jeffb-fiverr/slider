@@ -87,8 +87,7 @@ function Slider($container) {
     setSlidePosition(slideIndex);
     transitionSlides(m.slidePosition);
     handleNewActiveSlide();
-
-    s.$slides.find('.js-slider-audio-play').removeClass('hidden');
+    showButtonsAndReviews();
   };
 
   function slideThumbClicked(e) {
@@ -234,7 +233,7 @@ function Slider($container) {
         videoAudioSrc = $videoAudioPlay.data('src'),
         isVideo = $videoAudioPlay.hasClass('js-slider-video-play'),
         playerClass = isVideo ? 'video' : 'audio',
-        $videoIframe = $('<iframe />', {
+        $iframe = $('<iframe />', {
       'class': 'slide-iframe js-slide-iframe slide-iframe-' + playerClass,
       'src': videoAudioSrc + '&wmode=transparent',
       'frameborder': '0',
@@ -242,7 +241,13 @@ function Slider($container) {
       'webkitallowfullscreen': ''
     });
 
-    $parentContainer.append($videoIframe).parents('.js-slide').find('.work-review').css('bottom', '-80px').parents('.js-slide').find('.js-slider-audio-play').addClass('hidden');
+    $parentContainer.append($iframe).parents('.js-slide').find('.js-slider-audio-play, .js-slider-video-play').addClass('hidden').parents('.js-slide').find('.work-review').addClass('video-playing');
+  };
+
+  function showButtonsAndReviews() {
+    s.$slides.find('.js-slider-audio-play, .js-slider-video-play').removeClass('hidden');
+
+    s.$slides.find('.js-work-review').removeClass('video-playing');
   };
 
   function stopPlayingAudioVideo() {

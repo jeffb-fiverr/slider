@@ -157,7 +157,13 @@
 
             &.active {
 
-                .work-review { bottom: 0; }
+                .work-review {
+                    bottom: 0;
+
+                    &.video-playing {
+                        bottom: -80px;
+                    }
+                }
 
                 @include opacity(1);
             }

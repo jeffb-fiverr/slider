@@ -9,22 +9,19 @@
             <div class="slide js-slide" {{#itemScopeType}}itemscope itemtype="http://schema.org/{{.}}"{{/itemScopeType}}>
                 <div class="thumbnail">
                     {{#if typeVideo}}
-                        Video
+                        <a href="#!" class="fa fa-play slider-video-play js-slider-video-play js-gtm-event-auto" data-gtm-category="gig-page-old" data-gtm-action="click" data-gtm-label="gallery-video-play" data-src="{{src}}" rel="nofollow" itemprop="url"></a>
                     {{/if}}
                     {{#if typeAudio}}
-                        Audio
-                    {{/if}}
-                    {{#if typeImage}}
-                        Image
+                        <a href="#!" class="fa fa-play slider-audio-play js-slider-audio-play" data-src="{{src}}" itemprop="url"></a>
                     {{/if}}
                     {{#if typePdf}}
-                        PDF
+                        <a href="#" class="btn-full-screen js-gtm-event-auto" data-gtm-category="gig-page-old" data-gtm-action="click" data-gtm-label="gallery-pdf-enlarge" data-full-screen-images="{{src}}" rel="noindex, nofollow">Full Screen</a>
                     {{/if}}
 
                     {{#if thumbnail}}
-                        <img src="{{thumbnail}}" alt="{{name}}" />
+                        <img src="{{thumbnail}}" alt="{{name}}" itemprop="thumbnail" width="100%" data-reload="inprogress">
                     {{else}}
-                        <div class="{{type}}-thumb"></div>
+                        <div class="audio-wave"></div>
                     {{/if}}
                 </div>
 

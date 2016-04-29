@@ -74,6 +74,7 @@ function Slider($container) {
       s.$slideThumbRight.on('click', slideThumbCarouselRight);
       s.$slideThumbLeft.on('click', slideThumbCarouselLeft);
       s.$thumbs.on('click', slideThumbClicked);
+      s.$slides.find('.js-slider-video-play, .js-slider-audio-play').on('click', handleAudioVideoPlay);
     }
   };
 
@@ -82,9 +83,12 @@ function Slider($container) {
   };
 
   function showSpecificSlide(slideIndex) {
+    stopPlayingAudioVideo();
     setSlidePosition(slideIndex);
     transitionSlides(m.slidePosition);
     handleNewActiveSlide();
+
+    s.$slides.find('.js-slider-audio-play').removeClass('hidden');
   };
 
   function slideThumbClicked(e) {
@@ -204,11 +208,6 @@ function Slider($container) {
   };
 
   function handleThumbnailSliderArrows(containerWidth, viewableWidth, leftPos) {
-    console.info('handleThumbnailSliderArrows', {
-      containerWidth: containerWidth,
-      viewableWidth: viewableWidth,
-      leftPos: leftPos
-    });
 
     var leftMargin = Math.abs(parseInt(leftPos));
 
@@ -225,6 +224,29 @@ function Slider($container) {
       s.$slideThumbLeft.removeClass('hidden');
       s.$slideThumbRight.removeClass('hidden');
     }
+  };
+
+  function handleAudioVideoPlay(e) {
+    if (e) e.preventDefault();
+
+    var $videoAudioPlay = $(this),
+        $parentContainer = $videoAudioPlay.parents('.thumbnail'),
+        videoAudioSrc = $videoAudioPlay.data('src'),
+        isVideo = $videoAudioPlay.hasClass('js-slider-video-play'),
+        playerClass = isVideo ? 'video' : 'audio',
+        $videoIframe = $('<iframe />', {
+      'class': 'slide-iframe js-slide-iframe slide-iframe-' + playerClass,
+      'src': videoAudioSrc + '&wmode=transparent',
+      'frameborder': '0',
+      'wmode': 'Opaque',
+      'webkitallowfullscreen': ''
+    });
+
+    $parentContainer.append($videoIframe).parents('.js-slide').find('.work-review').css('bottom', '-80px').parents('.js-slide').find('.js-slider-audio-play').addClass('hidden');
+  };
+
+  function stopPlayingAudioVideo() {
+    s.$slides.find('.js-slide-iframe').remove();
   };
 
   init();

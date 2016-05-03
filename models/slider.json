@@ -18,7 +18,7 @@
         {
             "typeAudio" : true,
             "name" : "blue doing some audio voiceover",
-            "src" : "http://view.vzaar.com/6846468/player?autoplay=true&apiOn=true",
+            "src" : "http://view.vzaar.com/6846468/player?apiOn=true",
             "review" : {
                 "text" : "EXCELLENT! Thank you so much. I'll be back for sure!",
                 "reviewer" : "Reviewed by paulkellisjr 1 day ago"
@@ -58,7 +58,7 @@
         {
             "typeAudio" : true,
             "name" : "blue doing some audio voiceover",
-            "src" : "http://view.vzaar.com/6846468/player?autoplay=true&apiOn=true"
+            "src" : "http://view.vzaar.com/6846468/player?apiOn=true"
         },
         {
             "typePdf" : true,
@@ -90,7 +90,7 @@
         {
             "typeAudio" : true,
             "name" : "blue doing some audio voiceover",
-            "src" : "http://view.vzaar.com/6846468/player?autoplay=true&apiOn=true"
+            "src" : "http://view.vzaar.com/6846468/player?apiOn=true"
         },
         {
             "typePdf" : true,
@@ -122,7 +122,7 @@
         {
             "typeAudio" : true,
             "name" : "blue doing some audio voiceover",
-            "src" : "http://view.vzaar.com/6846468/player?autoplay=true&apiOn=true"
+            "src" : "http://view.vzaar.com/6846468/player?apiOn=true"
         },
         {
             "typePdf" : true,

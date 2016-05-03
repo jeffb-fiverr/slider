@@ -12,6 +12,6 @@ body {
     margin: 0;
 
     &.ismobileortablet {
-        min-width: auto;
+        min-width: inherit;
     }
 }

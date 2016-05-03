@@ -11,12 +11,13 @@ body.ismobileortablet {
             .slide-counter {
                 position: absolute;
                 z-index: 4;
-                bottom: 10px;
                 width: 100%;
+                bottom: 10px;
                 text-align: center;
                 font-size: 16px;
                 color: #fff;
-                text-shadow: 0 -1px 2px rgba(0,0,0,0.3);
+
+                @include text-shadow(0 -1px 2px rgba(0,0,0,0.3));
 
                 strong {
                     padding: 0 2px;
@@ -30,6 +31,33 @@ body.ismobileortablet {
             .slide {
                 img {
                     width: 100%;
+                }
+
+                iframe {
+                    position: absolute;
+                    z-index: 3;
+                    left: 0;
+                    top: 0;
+                    border: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                [class^='swipe-handler'] {
+                    position: absolute;
+                    z-index: 4;
+                    width: 38%;
+                    height: 100%;
+                    top: 0;
+
+                    &.swipe-handler-right { right: 0; }
+                    &.swipe-handler-left {
+                        left: 0;
+
+                        &.swipe-handler-audio {
+                            height: 70%;
+                        }
+                    }
                 }
             }
         }

@@ -13,22 +13,37 @@
         {{#slides}}
             <div class="slide js-slide" {{#itemScopeType}}itemscope itemtype="http://schema.org/{{.}}"{{/itemScopeType}}>
                 <div class="thumbnail">
-                    {{#unless ../mobile}}
-                        {{#if typeVideo}}
+                    {{#if typeVideo}}
+                        {{#if ../mobile}}
+                            <span class="swipe-handler-left"></span>
+                            <span class="swipe-handler-right"></span>
+                            <iframe src="{{src}}"></iframe>
+                        {{else}}
                             <a href="#!" class="fa fa-play slider-video-play js-slider-video-play js-gtm-event-auto" data-gtm-category="gig-page-old" data-gtm-action="click" data-gtm-label="gallery-video-play" data-src="{{src}}" rel="nofollow" itemprop="url"></a>
+                            <img src="{{thumbnail}}" alt="{{name}}" itemprop="thumbnail" width="100%" data-reload="inprogress">
                         {{/if}}
-                        {{#if typeAudio}}
-                            <a href="#!" class="fa fa-play slider-audio-play js-slider-audio-play" data-src="{{src}}" itemprop="url"></a>
-                        {{/if}}
-                        {{#if typePdf}}
-                            <a href="#" class="btn-full-screen js-gtm-event-auto" data-gtm-category="gig-page-old" data-gtm-action="click" data-gtm-label="gallery-pdf-enlarge" data-full-screen-images="{{src}}" rel="noindex, nofollow">Full Screen</a>
-                        {{/if}}
-                    {{/unless}}
+                    {{/if}}
 
-                    {{#if thumbnail}}
+                    {{#if typeAudio}}
+                        {{#if ../mobile}}
+                            <span class="swipe-handler-left swipe-handler-audio"></span>
+                            <span class="swipe-handler-right swipe-handler-audio"></span>
+                            <iframe src="{{src}}"></iframe>
+                        {{else}}
+                            <a href="#!" class="fa fa-play slider-audio-play js-slider-audio-play" data-src="{{src}}" itemprop="url"></a>
+                            <div class="audio-wave"></div>
+                        {{/if}}
+                    {{/if}}
+
+                    {{#if typeImage}}
                         <img src="{{thumbnail}}" alt="{{name}}" itemprop="thumbnail" width="100%" data-reload="inprogress">
-                    {{else}}
-                        <div class="audio-wave"></div>
+                    {{/if}}
+
+                    {{#if typePdf}}
+                        {{#unless ../mobile}}
+                            <a href="#" class="btn-full-screen js-gtm-event-auto" data-gtm-category="gig-page-old" data-gtm-action="click" data-gtm-label="gallery-pdf-enlarge" data-full-screen-images="{{src}}" rel="noindex, nofollow">Full Screen</a>
+                        {{/unless}}
+                        <img src="{{thumbnail}}" alt="{{name}}" itemprop="thumbnail" width="100%" data-reload="inprogress">
                     {{/if}}
                 </div>
 

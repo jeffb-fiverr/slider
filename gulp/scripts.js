@@ -34,5 +34,5 @@ gulp
                     filename : `${pkg.moduleName}.js`
                 }
             }))
-            .pipe(gulp.dest('./public/build'));
+            .pipe(gulp.dest('public/build'));
     });

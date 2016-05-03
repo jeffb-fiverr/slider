@@ -9912,16 +9912,18 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const $ = __webpack_require__(1);
-	const Hammer = __webpack_require__(3);
+	'use strict';
+
+	var $ = __webpack_require__(1);
+	var Hammer = __webpack_require__(3);
 
 	function Slider($container) {
 
-	  const m = {},
-	        s = {};
+	  var m = {},
+	      s = {};
 
 	  function init() {
-	    const model = $container.find('.js-slider').data();
+	    var model = $container.find('.js-slider').data();
 
 	    m.firstSlidePosition = m.slidePosition = 0;
 	    m.slideIterator = 1;
@@ -9944,19 +9946,19 @@
 	    bindEventListeners();
 	  };
 
-	  function transitionSlides(activeSlideIndex = m.firstSlidePosition) {
-	    const activeClass = 'active';
+	  function transitionSlides() {
+	    var activeSlideIndex = arguments.length <= 0 || arguments[0] === undefined ? m.firstSlidePosition : arguments[0];
 
-	    s.$slides
-	      .hide()
-	      .removeClass(activeClass)
-	      .eq(activeSlideIndex)
-	      .show(0, function() {
-	        $(this).addClass(activeClass);
-	      });
+	    var activeClass = 'active';
+
+	    s.$slides.hide().removeClass(activeClass).eq(activeSlideIndex).show(0, function () {
+	      $(this).addClass(activeClass);
+	    });
 	  };
 
-	  function setSlidePosition(newPos = m.slidePosition) {
+	  function setSlidePosition() {
+	    var newPos = arguments.length <= 0 || arguments[0] === undefined ? m.slidePosition : arguments[0];
+
 	    m.slidePosition = newPos;
 	    s.$currentSlideNumber.text(newPos + 1);
 
@@ -9977,13 +9979,11 @@
 	      return;
 	    }
 
-	    const thumbCount = s.$thumbs.length,
-	          thumbWidth = s.$thumbs.eq(0).outerWidth(true);
+	    var thumbCount = s.$thumbs.length,
+	        thumbWidth = s.$thumbs.eq(0).outerWidth(true);
 
-	    s.$thumbContainer.width((thumbWidth * thumbCount) + "px");
-	    s.$thumbs
-	      .eq(m.slidePosition)
-	      .addClass('active');
+	    s.$thumbContainer.width(thumbWidth * thumbCount + "px");
+	    s.$thumbs.eq(m.slidePosition).addClass('active');
 	  };
 
 	  function bindEventListeners() {
@@ -9996,10 +9996,10 @@
 	  };
 
 	  function bindMobileEvents() {
-	    const slider = $container.find('.js-slider')[0],
-	          hammerEl = new Hammer(slider, {});
+	    var slider = $container.find('.js-slider')[0],
+	        hammerEl = new Hammer(slider, {});
 
-	    hammerEl.on('swipe', (e) => {
+	    hammerEl.on('swipe', function (e) {
 	      console.info(e);
 	      if (e.direction === 2) {
 	        // swiping left - move slides right
@@ -10017,9 +10017,7 @@
 	    s.$slideThumbRight.on('click', slideThumbCarouselRight);
 	    s.$slideThumbLeft.on('click', slideThumbCarouselLeft);
 	    s.$thumbs.on('click', slideThumbClicked);
-	    s.$slides
-	      .find('.js-slider-video-play, .js-slider-audio-play')
-	      .on('click', handleAudioVideoPlay);
+	    s.$slides.find('.js-slider-video-play, .js-slider-audio-play').on('click', handleAudioVideoPlay);
 	  };
 
 	  function getSlideCount() {
@@ -10041,8 +10039,8 @@
 	  function slideThumbClicked(e) {
 	    if (e) e.preventDefault();
 
-	    const $clickedSlide = $(this),
-	          slideIndex = $clickedSlide.index();
+	    var $clickedSlide = $(this),
+	        slideIndex = $clickedSlide.index();
 
 	    showSpecificSlide(slideIndex);
 	  };
@@ -10056,16 +10054,16 @@
 	  function slideThumbCarouselRight(e) {
 	    if (e) e.preventDefault();
 
-	    const containerPos = Math.abs(parseInt(s.$thumbContainer.css('left'))),
-	          totalContainerWidth = parseInt(s.$thumbContainer.width()),
-	          viewableWidth = parseInt($container.find('.thumbs-container').width()),
-	          leftMostPos = totalContainerWidth - viewableWidth;
+	    var containerPos = Math.abs(parseInt(s.$thumbContainer.css('left'))),
+	        totalContainerWidth = parseInt(s.$thumbContainer.width()),
+	        viewableWidth = parseInt($container.find('.thumbs-container').width()),
+	        leftMostPos = totalContainerWidth - viewableWidth;
 
-	    if (((containerPos + m.thumbMovementDistance)) > leftMostPos) {
-	      s.$thumbContainer.css('left', `-${leftMostPos}px`);
+	    if (containerPos + m.thumbMovementDistance > leftMostPos) {
+	      s.$thumbContainer.css('left', '-' + leftMostPos + 'px');
 	      s.$slideThumbRight.addClass('hidden');
 	    } else {
-	      s.$thumbContainer.css('left', `-=${m.thumbMovementDistance}px`);
+	      s.$thumbContainer.css('left', '-=' + m.thumbMovementDistance + 'px');
 	      s.$slideThumbLeft.removeClass('hidden');
 	    }
 	  };
@@ -10076,7 +10074,9 @@
 	    showSpecificSlide(m.slidePosition - 1);
 	  };
 
-	  function handleNewActiveSlide(activeSlideIndex = m.slidePosition) {
+	  function handleNewActiveSlide() {
+	    var activeSlideIndex = arguments.length <= 0 || arguments[0] === undefined ? m.slidePosition : arguments[0];
+
 
 	    if (getSlideCount() < 2) {
 	      return;
@@ -10086,7 +10086,7 @@
 	      // first slide
 	      s.$slideLeft.addClass('hidden');
 	      s.$slideRight.removeClass('hidden');
-	    } else if (activeSlideIndex === (getSlideCount() - 1)) {
+	    } else if (activeSlideIndex === getSlideCount() - 1) {
 	      // last slide
 	      s.$slideLeft.removeClass('hidden');
 	      s.$slideRight.addClass('hidden');
@@ -10102,51 +10102,47 @@
 	  function slideThumbCarouselLeft(e) {
 	    if (e) e.preventDefault();
 
-	    const containerPos = Math.abs(parseInt(s.$thumbContainer.css('left')));
+	    var containerPos = Math.abs(parseInt(s.$thumbContainer.css('left')));
 
 	    if (containerPos <= m.thumbMovementDistance) {
 	      s.$thumbContainer.css('left', '0');
 	      s.$slideThumbLeft.addClass('hidden');
 	    } else {
-	      s.$thumbContainer.css('left', `+=${m.thumbMovementDistance}px`);
+	      s.$thumbContainer.css('left', '+=' + m.thumbMovementDistance + 'px');
 	      s.$slideThumbRight.removeClass('hidden');
 	    }
-
 	  };
 
 	  function activateThumbnail() {
-	    s.$thumbs
-	      .removeClass('active')
-	      .eq(m.slidePosition)
-	      .addClass('active');
+	    s.$thumbs.removeClass('active').eq(m.slidePosition).addClass('active');
 	  };
 
 	  function moveThumbnailIntoView() {
-	    const thumbWidth = parseInt(s.$thumbs.eq(0).outerWidth(true)),
-	          viewableWidth = parseInt($container.find('.thumbs-container').width()),
-	          containerWidth = parseInt(s.$thumbContainer.width()),
-	          currentViewMin = Math.abs(parseInt(s.$thumbContainer.css('left'))),
-	          currentViewMax = currentViewMin + viewableWidth,
-	          currentThumbLeftPos = (thumbWidth * m.slidePosition),
-	          currentThumbRightPos = currentThumbLeftPos + thumbWidth,
-	          isInLeftBounds = (currentViewMin <= currentThumbLeftPos),
-	          isInRightBounds = (currentViewMax >= currentThumbRightPos);
+	    var thumbWidth = parseInt(s.$thumbs.eq(0).outerWidth(true)),
+	        viewableWidth = parseInt($container.find('.thumbs-container').width()),
+	        containerWidth = parseInt(s.$thumbContainer.width()),
+	        currentViewMin = Math.abs(parseInt(s.$thumbContainer.css('left'))),
+	        currentViewMax = currentViewMin + viewableWidth,
+	        currentThumbLeftPos = thumbWidth * m.slidePosition,
+	        currentThumbRightPos = currentThumbLeftPos + thumbWidth,
+	        isInLeftBounds = currentViewMin <= currentThumbLeftPos,
+	        isInRightBounds = currentViewMax >= currentThumbRightPos;
 
-	    let newLeftPosDistance,
-	        newLeftPosNegated,
-	        newLeftPos;
+	    var newLeftPosDistance = void 0,
+	        newLeftPosNegated = void 0,
+	        newLeftPos = void 0;
 
 	    // is all of thumb in view?
 	    if (isInLeftBounds && isInRightBounds) {
 	      return;
 	    }
 
-	    newLeftPosDistance = (currentThumbLeftPos - (viewableWidth/2));
-	    newLeftPosNegated = (newLeftPosDistance * -1);
+	    newLeftPosDistance = currentThumbLeftPos - viewableWidth / 2;
+	    newLeftPosNegated = newLeftPosDistance * -1;
 	    newLeftPos = newLeftPosNegated + "px";
 
-	    if (newLeftPosDistance > (containerWidth - viewableWidth)) {
-	      newLeftPos = `-${containerWidth - viewableWidth}px`;
+	    if (newLeftPosDistance > containerWidth - viewableWidth) {
+	      newLeftPos = '-' + (containerWidth - viewableWidth) + 'px';
 	    } else if (newLeftPosDistance < 0) {
 	      newLeftPos = 0;
 	    }
@@ -10158,7 +10154,7 @@
 
 	  function handleThumbnailSliderArrows(containerWidth, viewableWidth, leftPos) {
 
-	    const leftMargin = Math.abs(parseInt(leftPos));
+	    var leftMargin = Math.abs(parseInt(leftPos));
 
 	    if (containerWidth === viewableWidth) {
 	      s.$slideThumbLeft.addClass('hidden');
@@ -10166,56 +10162,42 @@
 	    } else if (leftPos === 0) {
 	      s.$slideThumbLeft.addClass('hidden');
 	      s.$slideThumbRight.removeClass('hidden');
-	    } else if ((leftMargin + viewableWidth) === containerWidth) {
+	    } else if (leftMargin + viewableWidth === containerWidth) {
 	      s.$slideThumbLeft.removeClass('hidden');
 	      s.$slideThumbRight.addClass('hidden');
 	    } else {
 	      s.$slideThumbLeft.removeClass('hidden');
 	      s.$slideThumbRight.removeClass('hidden');
 	    }
-
 	  };
 
 	  function handleAudioVideoPlay(e) {
 	    if (e) e.preventDefault();
 
-	    const $videoAudioPlay = $(this),
-	          $parentContainer = $videoAudioPlay.parents('.thumbnail'),
-	          videoAudioSrc = $videoAudioPlay.data('src'),
-	          isVideo = $videoAudioPlay.hasClass('js-slider-video-play'),
-	          playerClass = (isVideo) ? 'video' : 'audio',
-	          $iframe = $('<iframe />', {
-	            'class' : `slide-iframe js-slide-iframe slide-iframe-${playerClass}`,
-	            'src' : `${videoAudioSrc}&wmode=transparent`,
-	            'frameborder' : '0',
-	            'wmode' : 'Opaque',
-	            'webkitallowfullscreen' : ''
-	          });
+	    var $videoAudioPlay = $(this),
+	        $parentContainer = $videoAudioPlay.parents('.thumbnail'),
+	        videoAudioSrc = $videoAudioPlay.data('src'),
+	        isVideo = $videoAudioPlay.hasClass('js-slider-video-play'),
+	        playerClass = isVideo ? 'video' : 'audio',
+	        $iframe = $('<iframe />', {
+	      'class': 'slide-iframe js-slide-iframe slide-iframe-' + playerClass,
+	      'src': videoAudioSrc + '&wmode=transparent',
+	      'frameborder': '0',
+	      'wmode': 'Opaque',
+	      'webkitallowfullscreen': ''
+	    });
 
-	    $parentContainer
-	      .append($iframe)
-	      .parents('.js-slide')
-	      .find('.js-slider-audio-play, .js-slider-video-play')
-	      .addClass('hidden')
-	      .parents('.js-slide')
-	      .find('.work-review')
-	      .addClass('video-playing');
+	    $parentContainer.append($iframe).parents('.js-slide').find('.js-slider-audio-play, .js-slider-video-play').addClass('hidden').parents('.js-slide').find('.work-review').addClass('video-playing');
 	  };
 
 	  function showButtonsAndReviews() {
-	    s.$slides
-	      .find('.js-slider-audio-play, .js-slider-video-play')
-	      .removeClass('hidden');
+	    s.$slides.find('.js-slider-audio-play, .js-slider-video-play').removeClass('hidden');
 
-	    s.$slides
-	      .find('.js-work-review')
-	      .removeClass('video-playing');
+	    s.$slides.find('.js-work-review').removeClass('video-playing');
 	  };
 
 	  function stopPlayingAudioVideo() {
-	    s.$slides
-	      .find('.js-slide-iframe')
-	      .remove();
+	    s.$slides.find('.js-slide-iframe').remove();
 	  };
 
 	  init();

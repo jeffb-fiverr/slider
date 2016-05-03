@@ -21593,5 +21593,5 @@ body {
   margin: 0;
 }
 body.ismobileortablet {
-  min-width: auto;
+  min-width: inherit;
 }

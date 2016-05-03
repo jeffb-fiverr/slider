@@ -17,22 +17,29 @@ function Slider($container) {
     m.isMobile = model.isMobile;
 
     s.$slides = $container.find('.js-slide');
-    s.$slideLeft = $container.find('.js-slide-left');
-    s.$slideRight = $container.find('.js-slide-right');
-    s.$thumbContainer = $container.find('.js-thumbs');
-    s.$thumbs = s.$thumbContainer.find('.js-thumb');
-    s.$slideThumbLeft = $container.find('.js-slide-thumbs-left');
-    s.$slideThumbRight = $container.find('.js-slide-thumbs-right');
     s.$currentSlideNumber = $container.find('.slide-current');
 
-    setupThumbnailCarousel();
     setSlidePosition();
-    showSliderArrows();
-    transitionSlides();
-    bindEventListeners();
+
+    if (m.isMobile) {
+      transitionMobileSlides();
+      bindMobileEvents();
+    } else {
+      s.$slideLeft = $container.find('.js-slide-left');
+      s.$slideRight = $container.find('.js-slide-right');
+      s.$thumbContainer = $container.find('.js-thumbs');
+      s.$thumbs = s.$thumbContainer.find('.js-thumb');
+      s.$slideThumbLeft = $container.find('.js-slide-thumbs-left');
+      s.$slideThumbRight = $container.find('.js-slide-thumbs-right');
+
+      setupThumbnailCarousel();
+      showSliderArrows();
+      transitionDesktopSlides();
+      bindDesktopEvents();
+    }
   };
 
-  function transitionSlides() {
+  function transitionDesktopSlides() {
     var activeSlideIndex = arguments.length <= 0 || arguments[0] === undefined ? m.firstSlidePosition : arguments[0];
 
     var activeClass = 'active';
@@ -41,6 +48,37 @@ function Slider($container) {
       $(this).addClass(activeClass);
     });
   };
+
+  function transitionMobileSlides() {
+    var activeSlideIndex = arguments.length <= 0 || arguments[0] === undefined ? m.firstSlidePosition : arguments[0];
+
+    var activeClass = 'active',
+        inactiveLeftClass = 'inactive-left',
+        inactiveRightClass = 'inactive-right',
+        inactiveClasses = inactiveLeftClass + ' ' + inactiveRightClass;
+
+    var $slide = void 0,
+        slideIndex = void 0;
+
+    s.$slides.each(function () {
+      $slide = $(this);
+      slideIndex = $slide.index() - 1;
+
+      console.info({
+        '$slide': $slide,
+        'slideIndex': slideIndex,
+        'activeSlideIndex': activeSlideIndex
+      });
+
+      if (slideIndex < activeSlideIndex) {
+        $slide.removeClass(inactiveClasses).addClass(inactiveLeftClass);
+      } else if (slideIndex > activeSlideIndex) {
+        $slide.removeClass(inactiveClasses).addClass(inactiveRightClass);
+      } else {
+        $slide.removeClass(inactiveClasses);
+      }
+    });
+  }
 
   function setSlidePosition() {
     var newPos = arguments.length <= 0 || arguments[0] === undefined ? m.slidePosition : arguments[0];
@@ -52,7 +90,7 @@ function Slider($container) {
   };
 
   function showSliderArrows() {
-    if (getSlideCount() < 2 || m.isMobile) {
+    if (getSlideCount() < 2) {
       return;
     }
 
@@ -61,10 +99,6 @@ function Slider($container) {
   };
 
   function setupThumbnailCarousel() {
-    if (m.isMobile) {
-      return;
-    }
-
     var thumbCount = s.$thumbs.length,
         thumbWidth = s.$thumbs.eq(0).outerWidth(true);
 
@@ -72,21 +106,11 @@ function Slider($container) {
     s.$thumbs.eq(m.slidePosition).addClass('active');
   };
 
-  function bindEventListeners() {
-    if (m.isMobile) {
-      bindMobileEvents();
-      return;
-    }
-
-    bindDesktopEvents();
-  };
-
   function bindMobileEvents() {
     var slider = $container.find('.js-slider')[0],
         hammerEl = new Hammer(slider, {});
 
     hammerEl.on('swipe', function (e) {
-      console.info(e);
       if (e.direction === 2) {
         // swiping left - move slides right
         slideRight(e);
@@ -115,11 +139,16 @@ function Slider($container) {
       return;
     }
 
-    stopPlayingAudioVideo();
     setSlidePosition(slideIndex);
-    transitionSlides(m.slidePosition);
-    handleNewActiveSlide();
-    showButtonsAndReviews();
+
+    if (m.isMobile) {
+      transitionMobileSlides(m.slidePosition);
+    } else {
+      stopPlayingAudioVideo();
+      transitionDesktopSlides(m.slidePosition);
+      handleNewActiveSlide();
+      showButtonsAndReviews();
+    }
   };
 
   function slideThumbClicked(e) {
@@ -137,6 +166,12 @@ function Slider($container) {
     showSpecificSlide(m.slidePosition + 1);
   };
 
+  function slideLeft(e) {
+    if (e) e.preventDefault();
+
+    showSpecificSlide(m.slidePosition - 1);
+  };
+
   function slideThumbCarouselRight(e) {
     if (e) e.preventDefault();
 
@@ -152,12 +187,6 @@ function Slider($container) {
       s.$thumbContainer.css('left', '-=' + m.thumbMovementDistance + 'px');
       s.$slideThumbLeft.removeClass('hidden');
     }
-  };
-
-  function slideLeft(e) {
-    if (e) e.preventDefault();
-
-    showSpecificSlide(m.slidePosition - 1);
   };
 
   function handleNewActiveSlide() {
@@ -283,6 +312,10 @@ function Slider($container) {
   };
 
   function stopPlayingAudioVideo() {
+    if (m.isMobile) {
+      return;
+    }
+
     s.$slides.find('.js-slide-iframe').remove();
   };
 

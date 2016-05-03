@@ -15,6 +15,8 @@
                 <div class="thumbnail">
                     {{#if typeVideo}}
                         {{#if ../mobile}}
+                            <span class="swipe-handler-left"></span>
+                            <span class="swipe-handler-right"></span>
                             <iframe src="{{src}}"></iframe>
                         {{else}}
                             <a href="#!" class="fa fa-play slider-video-play js-slider-video-play js-gtm-event-auto" data-gtm-category="gig-page-old" data-gtm-action="click" data-gtm-label="gallery-video-play" data-src="{{src}}" rel="nofollow" itemprop="url"></a>
@@ -24,6 +26,8 @@
 
                     {{#if typeAudio}}
                         {{#if ../mobile}}
+                            <span class="swipe-handler-left swipe-handler-audio"></span>
+                            <span class="swipe-handler-right swipe-handler-audio"></span>
                             <iframe src="{{src}}"></iframe>
                         {{else}}
                             <a href="#!" class="fa fa-play slider-audio-play js-slider-audio-play" data-src="{{src}}" itemprop="url"></a>

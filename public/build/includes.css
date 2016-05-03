@@ -21588,3 +21588,10 @@ POPUP: BOOST YOUR SALES
   display: block;
   padding-top: 10px;
 }
+
+body {
+  margin: 0;
+}
+body.ismobileortablet {
+  min-width: auto;
+}

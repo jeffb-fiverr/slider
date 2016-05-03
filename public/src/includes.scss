@@ -7,3 +7,11 @@
 @import "global-popups-shared";
 @import "global";
 @import "global-popups";
+
+body {
+    margin: 0;
+
+    &.ismobileortablet {
+        min-width: auto;
+    }
+}

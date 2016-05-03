@@ -1,6 +1,7 @@
 'use strict';
 
 var $ = require('jquery');
+var Hammer = require('hammerjs');
 
 function Slider($container) {
 
@@ -22,8 +23,10 @@ function Slider($container) {
     s.$thumbs = s.$thumbContainer.find('.js-thumb');
     s.$slideThumbLeft = $container.find('.js-slide-thumbs-left');
     s.$slideThumbRight = $container.find('.js-slide-thumbs-right');
+    s.$currentSlideNumber = $container.find('.slide-current');
 
     setupThumbnailCarousel();
+    setSlidePosition();
     showSliderArrows();
     transitionSlides();
     bindEventListeners();
@@ -39,13 +42,17 @@ function Slider($container) {
     });
   };
 
-  function setSlidePosition(newPos) {
+  function setSlidePosition() {
+    var newPos = arguments.length <= 0 || arguments[0] === undefined ? m.slidePosition : arguments[0];
+
     m.slidePosition = newPos;
+    s.$currentSlideNumber.text(newPos + 1);
+
     return m.slidePosition;
   };
 
   function showSliderArrows() {
-    if (getSlideCount() < 2) {
+    if (getSlideCount() < 2 || m.isMobile) {
       return;
     }
 
@@ -67,15 +74,36 @@ function Slider($container) {
 
   function bindEventListeners() {
     if (m.isMobile) {
-      console.info('YOU ON MOBILE, BABY! $container:', $container);
-    } else {
-      s.$slideRight.on('click', slideRight);
-      s.$slideLeft.on('click', slideLeft);
-      s.$slideThumbRight.on('click', slideThumbCarouselRight);
-      s.$slideThumbLeft.on('click', slideThumbCarouselLeft);
-      s.$thumbs.on('click', slideThumbClicked);
-      s.$slides.find('.js-slider-video-play, .js-slider-audio-play').on('click', handleAudioVideoPlay);
+      bindMobileEvents();
+      return;
     }
+
+    bindDesktopEvents();
+  };
+
+  function bindMobileEvents() {
+    var slider = $container.find('.js-slider')[0],
+        hammerEl = new Hammer(slider, {});
+
+    hammerEl.on('swipe', function (e) {
+      console.info(e);
+      if (e.direction === 2) {
+        // swiping left - move slides right
+        slideRight(e);
+      } else if (e.direction === 4) {
+        // swiping right - move slides right
+        slideLeft(e);
+      }
+    });
+  };
+
+  function bindDesktopEvents() {
+    s.$slideRight.on('click', slideRight);
+    s.$slideLeft.on('click', slideLeft);
+    s.$slideThumbRight.on('click', slideThumbCarouselRight);
+    s.$slideThumbLeft.on('click', slideThumbCarouselLeft);
+    s.$thumbs.on('click', slideThumbClicked);
+    s.$slides.find('.js-slider-video-play, .js-slider-audio-play').on('click', handleAudioVideoPlay);
   };
 
   function getSlideCount() {
@@ -83,6 +111,10 @@ function Slider($container) {
   };
 
   function showSpecificSlide(slideIndex) {
+    if (slideIndex < 0 || slideIndex === getSlideCount()) {
+      return;
+    }
+
     stopPlayingAudioVideo();
     setSlidePosition(slideIndex);
     transitionSlides(m.slidePosition);

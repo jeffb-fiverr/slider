@@ -1,5 +1,6 @@
 {
-    "mobile" : false,
+    "mobile" : true,
+    "textOf" : "of",
 	"slides" : [
         {
             "typeImage" : true,
@@ -46,9 +47,9 @@
         {
             "typeVideo" : true,
             "itemScopeType" : "VideoObject",
-            "name" : "slapchop commercial",
-            "src" : "http://view.vzaar.com/6268382/player?autoplay=true",
-            "thumbnail" : "https://cldn0.fiverrcdn.com/fiverr/t_main2_video/v1461007208/vzrthumb/6268382/image",
+            "name" : "24 hour voice over",
+            "src" : "http://view.vzaar.com/6739554/player?autoplay=true",
+            "thumbnail" : "https://cldn0.fiverrcdn.com/fiverr/t_main2_video/v1462208099/vzrthumb/6739554/image",
             "review" : {
                 "text" : "Great as usual!",
                 "reviewer" : "Reviewed by walesbj about 10 hours ago"

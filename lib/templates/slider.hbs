@@ -1,22 +1,29 @@
 <section class="slider-container js-slider-container">
     <div class="slider js-slider {{#mobile}}isMobile{{/mobile}}" data-is-mobile="{{mobile}}">
-        {{#unless mobile}}
+        {{#if mobile}}
+            <div class="slide-counter">
+                <strong class="slide-current"></strong> {{textOf}} <strong>{{slides.length}}</strong>
+            </div>
+        {{else}}
             <a href="#!" class="hidden slide-nav slide-right js-slide-right"><i class="fa fa-chevron-right"></i></a>
             <a href="#!" class="hidden slide-nav slide-left js-slide-left"><i class="fa fa-chevron-left"></i></a>
-        {{/unless}}
+        {{/if}}
+
 
         {{#slides}}
             <div class="slide js-slide" {{#itemScopeType}}itemscope itemtype="http://schema.org/{{.}}"{{/itemScopeType}}>
                 <div class="thumbnail">
-                    {{#if typeVideo}}
-                        <a href="#!" class="fa fa-play slider-video-play js-slider-video-play js-gtm-event-auto" data-gtm-category="gig-page-old" data-gtm-action="click" data-gtm-label="gallery-video-play" data-src="{{src}}" rel="nofollow" itemprop="url"></a>
-                    {{/if}}
-                    {{#if typeAudio}}
-                        <a href="#!" class="fa fa-play slider-audio-play js-slider-audio-play" data-src="{{src}}" itemprop="url"></a>
-                    {{/if}}
-                    {{#if typePdf}}
-                        <a href="#" class="btn-full-screen js-gtm-event-auto" data-gtm-category="gig-page-old" data-gtm-action="click" data-gtm-label="gallery-pdf-enlarge" data-full-screen-images="{{src}}" rel="noindex, nofollow">Full Screen</a>
-                    {{/if}}
+                    {{#unless ../mobile}}
+                        {{#if typeVideo}}
+                            <a href="#!" class="fa fa-play slider-video-play js-slider-video-play js-gtm-event-auto" data-gtm-category="gig-page-old" data-gtm-action="click" data-gtm-label="gallery-video-play" data-src="{{src}}" rel="nofollow" itemprop="url"></a>
+                        {{/if}}
+                        {{#if typeAudio}}
+                            <a href="#!" class="fa fa-play slider-audio-play js-slider-audio-play" data-src="{{src}}" itemprop="url"></a>
+                        {{/if}}
+                        {{#if typePdf}}
+                            <a href="#" class="btn-full-screen js-gtm-event-auto" data-gtm-category="gig-page-old" data-gtm-action="click" data-gtm-label="gallery-pdf-enlarge" data-full-screen-images="{{src}}" rel="noindex, nofollow">Full Screen</a>
+                        {{/if}}
+                    {{/unless}}
 
                     {{#if thumbnail}}
                         <img src="{{thumbnail}}" alt="{{name}}" itemprop="thumbnail" width="100%" data-reload="inprogress">

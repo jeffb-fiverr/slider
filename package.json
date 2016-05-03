@@ -1,7 +1,7 @@
 {
   "name": "@fiverr/slider",
   "moduleName": "slider",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "slider component for use on gigs page to show off examples as well as other places throughout v2",
   "author": "Jeff Borders",
   "main": "./dist/js/slider.js",
